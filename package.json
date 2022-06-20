@@ -1,0 +1,40 @@
+{
+  "name": "@fathym/eac-state-kit",
+  "version": "0.0.0",
+  "description": "The Fathym reference architecture projects provide the foundation for building Fathym's vanilla typescript applications.",
+  "main": "./build/index.cjs.js",
+  "module": "./build/index.esm.js",
+  "typings": "./build/src/index.d.ts",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "dev": "webpack --mode development --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prd.js",
+    "deploy": "npm version patch && npm run deploy:all",
+    "deploy:all": "npm version patch --prefix public && npm run build && npm publish ./build --access public",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fathym/reference-architecture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fathym/reference-architecture/issues"
+  },
+  "homepage": "https://github.com/fathym/reference-architecture#readme",
+  "devDependencies": {
+    "@fathym/common": "^0.0.20",
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
