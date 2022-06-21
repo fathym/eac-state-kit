@@ -44,7 +44,7 @@ module.exports = {
     }),
     new PackageJsonDeploy({
       PackageFormat: {
-        name: "@fathym/common",
+        name: null,
         version: null,
         main: null,
         module: null,
