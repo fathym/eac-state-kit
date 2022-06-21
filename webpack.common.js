@@ -48,7 +48,8 @@ module.exports = {
         version: null,
         main: null,
         module: null,
-        typings: null
+        typings: null,
+        dependencies: null,
       },
       PackageJson: packageJson
     })
