@@ -1,26 +1,28 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PackageJsonDeploy = require('./node_modules/@fathym-devkit/package-json-deploy-webpack-plugin/src/lib/PackageJsonDeploy.js');
+const packageJson = require('./package.json');
 
 module.exports = {
-  entry: {
-    'eac-state': './projects/eac-state/index.ts'
+  entry:{
+    common: './src/index.ts',
   },
   // devtool: 'inline-source-map',
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
+      // {
+      //   test: /\.tsx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    clean: true,
+    clean: false,
     path: path.resolve(__dirname, 'build'),
   },
   plugins: [
@@ -31,11 +33,24 @@ module.exports = {
           context: 'public/',
           globOptions: { ignore: ['**/public/index.html'] },
         },
+        {
+          from: 'LICENSE',
+        },
       ],
     }),
     new HtmlWebpackPlugin({
       publicPath: './',
       template: 'public/index.html',
     }),
+    new PackageJsonDeploy({
+      PackageFormat: {
+        name: "@fathym/common",
+        version: null,
+        main: null,
+        module: null,
+        typings: null
+      },
+      PackageJson: packageJson
+    })
   ],
 };

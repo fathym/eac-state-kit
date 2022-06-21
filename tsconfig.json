@@ -3,9 +3,10 @@
     "rootDir": "./",
     "target": "es2018",
     "module": "esnext",
-    "outDir": "./dist",
+    "outDir": "./build",
     "declaration": true,
     "noEmitOnError": true,
+    "jsx": "react",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": false,
@@ -13,5 +14,6 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": ["./src"]
 }

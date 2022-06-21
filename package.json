@@ -2,17 +2,18 @@
   "name": "@fathym/eac-state-kit",
   "version": "0.0.0",
   "description": "The Fathym reference architecture projects provide the foundation for building Fathym's vanilla typescript applications.",
-  "main": "./build/index.cjs.js",
-  "module": "./build/index.esm.js",
-  "typings": "./build/src/index.d.ts",
+  "main": "./index.cjs.js",
+  "module": "./index.esm.js",
+  "typings": "./src/index.d.ts",
   "files": [
     "build/"
   ],
   "scripts": {
-    "dev": "webpack --mode development --config webpack.dev.js",
-    "build": "webpack --mode production --config webpack.prd.js",
+    "build": "rimraf build && npm run build:cjs && npm run build:esm",
+    "build:cjs": "webpack --mode development --config webpack-cjs.js",
+    "build:esm": "webpack --mode development --config webpack-esm.js",
     "deploy": "npm version patch && npm run deploy:all",
-    "deploy:all": "npm version patch --prefix public && npm run build && npm publish ./build --access public",
+    "deploy:all": "npm run build && npm publish ./build --access public",
     "start": "webpack serve --open --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/fathym/reference-architecture#readme",
   "devDependencies": {
     "@fathym/common": "^0.0.20",
+    "@fathym-devkit/package-json-deploy-webpack-plugin": "^1.0.5",
     "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.5.0",
     "rimraf": "^3.0.2",
