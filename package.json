@@ -1,6 +1,6 @@
 {
   "name": "@fathym/eac-state-kit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The Fathym reference architecture projects provide the foundation for building Fathym's vanilla typescript applications.",
   "main": "./index.cjs.js",
   "module": "./index.esm.js",
