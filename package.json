@@ -39,6 +39,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.0.27",
     "@fathym/common": "^0.0.22"
   }
 }
